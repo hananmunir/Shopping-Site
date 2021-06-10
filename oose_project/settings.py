@@ -85,13 +85,10 @@ WSGI_APPLICATION = 'oose_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Shopping Site',
-        'USER': 'postgres',
-        'PASSWORD': 'HANAN456',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
+}
+
 }
 
 import dj_database_url
