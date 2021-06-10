@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'home.html' %}
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Edit Information</title>
+    {% endblock %}
+</head>
+<body>
+{% block header %}
+<section class = "product-header">
+    {% endblock %}
+    {% block text %}
+    {% endblock %}
+    {% block body %}
+
+    <div class="signup-container">
+
+        <hr>
+        <div style = "width:70%; margin:auto; text-align:center;" class = "messages">
+            {% for message in messages%}
+            <h3 style = " color: red;">{{message}}</h3>
+            {% endfor %}
+        </div>
+        <form action = "" method="POST">{% csrf_token %}
+            <label for="fname"><b>First Name</b></label>
+            <input class = "login-input" type="text" id= "fname" value= "{{customer.fname}}"  name="fname" required>
+
+            <label for="lname"><b>Last Name</b></label>
+            <input class = "login-input" type="text" id = "lname" value= "{{customer.lname}}"   name="lname" required>
+
+
+            <label for="email"><b>Email</b></label>
+            <input class = "login-input" type="text" id = "email" value= "{{customer.email}}" name="email" required>
+                <br><br><label for="gender"><b>Select Gender*</b></label><br>
+            <select class = "login-input" name="gender" id="gender">
+                <option value="Male">Male</option>
+                <option value="Female" selected>Female</option>
+                <option value="Other" >Other</option>
+            </select>
+            <br>
+
+
+            <div class="clearfix">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="submit" class="signupbtn">Save</button>
+            </div>
+        </form>
+    </div>
+    <script>
+            $("select").each(function(){$(this).find('option[value="{{customer.gender}}"]').prop('selected', true); });
+        </script>
+
+    {% endblock %}
+</body>
+</html>

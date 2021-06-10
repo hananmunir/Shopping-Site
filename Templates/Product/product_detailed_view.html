@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% extends 'home.html' %}
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Product Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+    {% endblock %}
+
+</head>
+
+<body>
+{% block header %}
+<section class = "product-header">
+    {% endblock %}
+    {% block text %}
+    {% endblock %}
+    {% block body %}
+    <sec class = "single-product-section">
+        <div class="flex-container">
+            <div class="image-container">
+               
+               
+                <img src="{{product.imageURL}}"style="width:100%; height: 85%;">
+             
+
+            </div>
+            <div class="description-container">
+                <h1>{{product.title}}</h1>
+                <br>
+                <h2 style = "color: #51c4d3; opacity: 0.8; font-weight: 600" >{{product.special_note}}</h2>
+                <br>
+
+
+
+                <h4>Product Details</h4>
+                <p>{{product.specifications}}
+                </p>
+
+                <br>
+                <div class="buttons">
+                    <button data-product = "{{product.id}}" data-action = "add" class="fa fa-button update-cart" id="cart">ADD TO CART</button>
+                    <a href = "../../payment" ><button class="fa fa-button" id="buy">BUY NOW</button></a>
+                </div>
+            </div>
+        </div>
+        <div class="description-container-2">
+            <h4>Price</h4>
+            <p>${{product.price}}</p>
+            <div class="rating">
+                <h4>Rating</h4>
+                <i class="fa fa-star checked"></i>
+                <i class="fa fa-star checked"></i>
+                <i class="fa fa-star checked"></i>
+                <i class="fa fa-star checked"></i>
+                <i class="fa fa-star"></i>
+            </div>
+            <h4>Description</h4>
+            <p> {{product.description}}
+            </p>
+        </div>
+    </sec>
+    <script>
+    var slideIndex = 1;
+    showSlides(slideIndex);
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("demo");
+      var captionText = document.getElementById("caption");
+      if (n > slides.length) { slideIndex = 1 }
+      if (n < 1) { slideIndex = slides.length }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+      captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+  </script>
+
+    {% endblock %}
+
+</body>
+
+</html>

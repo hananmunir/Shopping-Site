@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  {% extends 'home.html' %}
+  {% load static %}
+  <meta charset="UTF-8">
+  {% block title %}
+  <title>Product</title>
+  {% endblock %}
+</head>
+<body>
+{% block header %}
+<section class ="search-header" >
+  {% endblock %}
+
+  {% block text %}
+  <div class="banner">
+    <div class="container">
+      <h1>FANDOM</h1>
+      <p>
+        Find your favourite FANDOM merchandise from anywhere anytime.
+      </p>
+      <div >
+        <form class="search" action = "search/" method = "GET">{% csrf_token %}
+
+          <input class = "search-bar" type="text"  placeholder="SEARCH HERE" name="search">
+          <button type="submit" style= "flex-basis: 15%;" class = "search-btn"><i class="fa fa-search"></i></button>
+        </form>
+
+      </div>
+
+
+    </div>
+  </div>
+  {% endblock %}
+  {% block body %}
+
+
+  <!-- reviews -->
+  <section id="card-container" class="more-product-section">
+    <h1>Products</h1>
+    <div class="card-title">
+
+      {% for product in products %}
+      <div class="card" >
+         <a href="{{product.get_absolute_url}}"><img src="{{product.imageURL}}" alt="Product Image" style="width:100%"></a>
+        <h4>{{product.title}}</h4>
+        <p class="price">${{product.price}}</p>
+        <p>{{product.special_note}}</p>
+        <p><button data-product = "{{product.id}}" data-action = "add" class = "update-cart">Add to Cart</button></p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+
+  <!-- Categories -->
+  <section class="category-container">
+    <h1>Categories</h1>
+
+    <div class="categories">
+      <div class = "category">
+        <img src="{% static 'images/img3.jpg' %}" alt="Clothing Image" >
+        <a href ="/products">
+          <div class = "layer" >
+            <h3> Clothes</h3>
+          </div>
+        </a>
+      </div>
+      <div class="category">
+        <img src="{% static 'images/img4.jpg' %}" alt="Toy  Image">
+        <a href ="/products">
+          <div class="layer">
+            <h3>Toys</h3>
+          </div>
+        </a>
+      </div>
+      <div class="category">
+        <img src= "{% static 'images/img8.jpg' %}" alt="Apparel Image" >
+        <a href ="/products">
+          <div class="layer">
+            <h3> Apparels</h3>
+          </div>
+        </a>
+
+      </div>
+      <div class="category">
+        <img src= "{% static 'images/img5.jpg' %}" alt="Jewelary Image">
+        <a href ="/products">
+          <div class="layer">
+            <h3> Jewelary</h3>
+          </div>
+        </a>
+      </div>
+      <div class="category">
+        <img src= "{% static 'images/img9.jpg' %}" alt="Computer Accessories Image">
+        <a href ="/products">
+          <div class="layer">
+            <h3> Computer Accessories</h3>
+          </div>
+        </a>
+      </div>
+
+      <div class="category">
+        <img src= "{% static 'images/img2.jpg' %}" alt="Books Image">
+        <a href ="/products" >
+          <div class="layer">
+            <h3> Books  </h3>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+</body>
+</html>

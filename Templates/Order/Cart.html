@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% extends 'home.html' %}
+    {% load static %}
+    {% block title %}
+    <title>Shopping Cart</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+</head>
+
+<body>
+{% block header %}
+<section class = "product-header">
+    {% endblock %}
+    {% block text %}
+    {% endblock %}
+    {% block body %}
+    <section class="cart">
+        <h1>Shopping Cart</h1>
+        <div class="row">
+
+
+            <div class="cart-col" id = "cart-col">
+                {% for item in items %}
+
+                <div class="product-col">
+                    
+                        <div class="cart-product">
+                            <a style="text-decoration:none" href="{{item.product.get_absolute_url}}">
+                            <img src="{{item.product.imageURL}}">
+                            <div class="product-info">
+                                <h3 class="product-name">{{item.product.title}}</h3>
+                                <h4 class="product-price">&dollar; {{item.product.price|floatformat:2}}</h4>
+                                <h4 class="product-offer">{{item.product.discount}}%</h4>
+                                </a>
+                                <div class="inc update-cart" data-product="{{item.product.id}}"  data-action ="add" style = "cursor:pointer; margin-left: 2.3em;">+</div>
+                                <p class = "product-quantity" >{{item.quantity}}</p>
+                                <div class="dec update-cart" data-product="{{item.product.id}}"  data-action ="remove"  style = "cursor:pointer; margin-left: 2.3em;" >-</div>
+                            </div>
+                        </div>
+                   
+                    <button data-product="{{item.product.id}}"  data-action ="delete"  class="remove-btn update-cart">Remove</button>
+
+                </div>
+
+                {% endfor %}
+
+
+            </div>
+            <div class="cart-col" id = "summary-col">
+                <div class="cart-total">
+                    <h2><b>Summary</b></h2>
+                    <p>
+                        <span>SubTotal</span>
+                        <span>&dollar;{{order.get_cart_total}}</span>
+                    </p>
+                    <p>
+                        <span>Number of Items</span>
+                        <span>{{order.get_cart_items}}</span>
+                    </p>
+                    <p>
+                        <span>Discount</span>
+                        <span>&dollar;{{order.get_total_discount}}</span>
+
+                    </p>
+                    <p>
+                        <span>Total Price</span>
+                        <span>&dollar;{{order.get_cart_total_price}}</span>
+                    </p>
+                    <a href="/../payment">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+</body>
+</html>

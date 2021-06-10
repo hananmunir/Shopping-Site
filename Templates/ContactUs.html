@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    {% extends 'home.html' %}
+
+    {% block title %}
+    <title>Contact Us-Fandom Store</title>
+    {% endblock %}
+
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+
+</head>
+
+<body>
+    {% block header %}
+    <section class="sub-header-contact">
+    {% endblock %}
+
+        {% block text %}
+        <h1>Contact Us</h1>
+        {% endblock %}
+
+    </section>
+    {% block body %}
+    <!----Location---->
+    <section class="location">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.413975938804!2d74.2104454151027!3d31.402718481408684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3918ffd0bc7c5f71%3A0x879e9b82857bcd94!2sCOMSATS%20University%2C%20Lahore%20Campus!5e0!3m2!1sen!2s!4v1621386363905!5m2!1sen!2s"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+    </section>
+
+    <!----Contact Us---->
+    <section class="contact-us">
+        <div class="row">
+            <div class="contact-col">
+                <div>
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <span>
+                        <h5>ABC Building ABC Street</h5>
+                        <p>city, province, country</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    <span>
+                        <h5>+92 XXXXXXXXXX</h5>
+                        <p>Monday to Friday, 9AM to 5PM</p>
+                    </span>
+                </div>
+                <div>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    <span>
+                        <h5>example@given.com</h5>
+                        <p>Email us your query</p>
+                    </span>
+                </div>
+
+            </div>
+            <div class="contact-col">
+                <form action="">
+                    <input type="text" class="name" placeholder="Enter Your Full Name" required>
+                    <input type="email" class="email" placeholder="Enter your Email" required>
+                    <input type="text" class="subject" placeholder="Enter Subject" required>
+                    <textarea rows="10" placeholder="Message" required></textarea>
+                    <button class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
+
+</body>
+
+</html>

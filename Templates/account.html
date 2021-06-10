@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% extends 'home.html' %}
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Accounts</title>
+    {% endblock %}
+</head>
+<body>
+
+{% block header %}
+<section class = "user-info-header">
+    {% endblock %}
+
+    {% block text %}
+    <div class="text-box">
+
+        <h1>Hello,</h1>
+        <p>{{user.customer.get_name}}<br><br>We hope you are doing fine</p>
+
+        <a href = "/accounts/logout">Log out</a>
+
+    </div>
+    {% endblock %}
+    {% block body %}
+
+    <div class="main-information-div">
+        <div class="information">
+
+
+            <div class="button">
+                <a href = "/cart" class="userinfo-button">Cart</a>
+            </div>
+
+            <section class="content-container">
+                <div class="content">
+                    <div class="info-container">
+                        <h2>Personal Information</h2>
+                        <p>{{user.customer.get_name}}</p>
+                        <p>{{user.customer.email}}</p>
+                        <p>DOB: {{user.customer.DOB}}</p>
+                        <p>{{user.customer.gender}}</p>
+                        <a href = "update_personal_info"><p id="edit-button" style="text-decoration: underline;"><b>Edit</b></p></a>
+                    </div>
+
+                    <div class="info-container">
+                        <h2>Address Book</h2>
+                        <p ><b>DEFAULT SHIPPING ADDRESS</b></p>
+                        <p><b>{{user.customer.fname}}</b></p>
+                        <p>{{user.customer.get_address}}</p>
+                        <p>{{user.customer.phone_number}}</p>
+                         <a href = "update_address"><p id="edit-button" style="text-decoration: underline;"><b>Edit</b></p></a>
+                    </div>
+
+                    <div class="info-container">
+                        <h2>Address Book</h2>
+                        <p ><b>DEFAULT BILLING ADDRESS</b></p>
+                        <p><b>{{user.customer.fname}}</b></p>
+                        <p>{{user.customer.get_address}}</p>
+                        <p>{{user.customer.phone_number}}</p>
+                         <a href = "update_address"><p id="edit-button" style="text-decoration: underline;"><b>Edit</b></p></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="order-section">
+
+                <div class="order-info">
+                    <table id="orders">
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Placed On</th>
+                            <th>Price</th>
+                        </tr>
+                        {% for order in orders %}
+
+                           <tr >
+                               <td style =" cursor:pointer;"  ><a style = "text-decoration: none" href = "/..{{order.get_absolute_url}}">{{order.id}}</a></td>
+
+
+                            <td style ="cursor:pointer;"><a style = "text-decoration: none" href = "/..{{order.get_absolute_url}}">{{order.date_ordered}}</a></td>
+
+                            <td style ="cursor:pointer;"><a style = "text-decoration: none" href = "/..{{order.get_absolute_url}}">${{order.get_cart_total}}</a></td>
+
+                        </tr>
+
+
+
+
+
+
+                        {% endfor %}
+
+                    </table>
+                </div>
+
+            </section>
+        </div>
+    </div>
+    {% endblock %}
+
+
+
+</body>
+</html>

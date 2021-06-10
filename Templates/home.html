@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    {% block title %}
+    <title>Fandom Store</title>
+    {% endblock %}
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/site.css' %}?{% now 'U' %}">
+    <script type = "text/javascript">
+        user = '{{request.user}}'
+        function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+        }
+        const csrftoken = getCookie('csrftoken');
+    </script>
+</head>
+<body>
+{% block header %}
+<section class = "header-container">
+    {% endblock %}
+    <nav>
+        <div class="logo">
+            <a href="/"></a><img src="{% static 'Icons/logo.png' %}"></a>
+            <a href="/"><h2 style = "display: inline;">Fandom Store</h2></a>
+
+        </div>
+
+        <div class="nav-links" id = "navLinks">
+            <img src = "{% static 'Icons/close.png' %}" class = "nav-icon" id = "close" onclick="closeMenu()">
+            <ul>
+                <li><a href = "/">Home</a></li>
+                <li><a href="/accounts">Accounts</a></li>
+                <li><a href = "/products">Products</a></li>
+                <li><a href = "/about">About Us</a></li>
+                <li><a href = "/contact">Contact Us</a></li>
+
+            </ul>
+        </div>
+        <img src="{% static 'Icons/menu.png' %}" class="nav-icon" id = "menu" onclick = "showMenu()">
+    </nav>
+    {% block text %}
+    <div class="text-box">
+
+        <h1>Your Favorite Shopping Place</h1>
+        <p>Fandom Store allows fans to buy Fandom merchandise from anywhere anytime.</p>
+        <a href = "/accounts/login">Log In</a>
+        <a href="/signup">Sign Up</a>
+
+    </div>
+    {% endblock %}
+
+</section>
+
+{% block body %}
+<!----Categories---->
+<section class="category-container">
+    <h1>Categories</h1>
+    <p>Shop in different categories</p>
+    <div class="categories">
+        <div class = "category">
+            <img src="{% static 'images/Clothes3.jpg' %}" alt="Clothing Image" >
+            <a href ="/products">
+                <div class = "layer" >
+                    <h3> Clothes</h3>
+                </div>
+            </a>
+        </div>
+        <div class="category">
+            <img src="{% static 'images/toy.jpg' %}" alt="Toy  Image">
+            <a href ="/products">
+                <div class="layer">
+                    <h3>Toys</h3>
+                </div>
+            </a>
+        </div>
+        <div class="category">
+            <img src= "{% static 'images/apparel.jpg' %}" alt="Apparel Image" >
+            <a href ="/products">
+                <div class="layer">
+                    <h3> Apparels</h3>
+                </div>
+            </a>
+
+        </div>
+        <div class="category">
+            <img src= "{% static 'images/jewelary.jpg' %}" alt="Jewelary Image">
+            <a href ="/products">
+                <div class="layer">
+                    <h3> Jewelary</h3>
+                </div>
+            </a>
+        </div>
+        <div class="category">
+            <img src= "{% static 'images/computer2.jpg' %}" alt="Computer Accessories Image">
+            <a href ="/products">
+                <div class="layer">
+                    <h3> Computer Accessories</h3>
+                </div>
+            </a>
+        </div>
+
+        <div class="category">
+            <img src= "{% static 'images/books.jpg' %}" alt="Books Image">
+            <a href ="/products" >
+                <div class="layer">
+                    <h3> Books  </h3>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!----Products---->
+<section class="product-container">
+    <h1>
+        Most Viewed Products
+    </h1>
+    <p>All the products mean something more to customers because they feel connected to them and
+        we respect that. Our Site is known for selling top quality products at best prices.
+    </p>
+
+    <div class = "top-products">
+        {% for product in products %}
+        <div class = "product">
+            <img src= "{{product.imageURL}}" alt="{{product.title}}">
+            <a href = "{{product.get_absolute_url}}">
+                <div class="overlay">
+                    <h3>{{product.title}}</h3>
+                    <p> {{product.special_note}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!----Testimonies---->
+<section class="testimony-container">
+    <h1>
+        What Our Customers Say
+    </h1>
+    <p>Every business whats to be sucessful and we believe the only way for it
+        to happen is by satisfying customers. So here are Testimonies from some of our
+        happy customers.
+    </p>
+    <div class="row">
+
+        <div class="testimony-col">
+            <img src= "{% static 'images/user2.jpg' %}" alt="User 1">
+            <div class = "testimony">
+                <p>I found my favorite Marvel merchandise here. The service was good
+                    and everything was professional. I'm really happy to shop here.
+                </p>
+                <h3>Hanan</h3>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
+        </div>
+
+
+        <div class="testimony-col">
+            <img src= "{% static 'images/user1.jpg' %}" alt="User 2">
+            <div class = "testimony">
+                <p>I wanted a poster from "The 100", and I easily found it here. I'm really
+                    glad they have a specific site for fandom merchandise.
+                </p>
+                <h3>Shery</h3>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</section>
+<!----Call To Action---->
+<section class="call-to-action">
+    <h1>
+        Start Shopping Now
+    </h1>
+    <p>
+        Search for products from your favourite movies, series, anime, books, comics or any other fandom.
+    </p>
+    <a href = "/products">Shop Now</a>
+</section>
+{% endblock %}
+<!----Footer---->
+
+<section class="footer">
+    <h4>
+        Connect To Us
+    </h4>
+    <p>
+        Follow us to stay connected and get updates about our new products and offers
+    </p>
+    <div class = "social-links">
+        <a href = "https://www.facebook.com"><i class="fa fa-facebook" aria-hidden="true" ></i></a>
+        <a href = "https://www.instagram.com"><i class="fa fa-instagram" aria-hidden="true" id = "insta"></i></a>
+        <a href = "https://www.twitter.com"><i class="fa fa-twitter" aria-hidden="true" id = 'twitter'></i></a>
+        <a href = "https://www.linkedin.com"><i class="fa fa-linkedin" aria-hidden="true" id = linkedin></i></a>
+        <a href = "https://www.youtube.com"><i class="fa fa-youtube" aria-hidden="true" id = "yt"></i></a>
+    </div>
+
+</section>
+
+<script src= "{% static 'js/site.js' %}"></script>
+<script src= "{% static 'js/cart.js' %}"></script>
+<script>
+        $(document).ready(function(){
+
+                $("#product-id").hide();
+             $('#review-button').click(function () {
+                 var id = this.dataset.product;
+                console.log(id);
+                window.location.href = '../review/' + id;
+                return false;
+            });
+            $(".login-input").click(function(){
+                $(".messages").hide();
+            });
+            $("#btncard").click(function(){
+                $("#nav-tab-cod").hide();
+                $("#nav-tab-card").show();
+            });
+            $("#btncod").click(function(){
+                $("#nav-tab-card").hide();
+                $("#nav-tab-cod").show();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% extends 'home.html' %}
+    {% load static %}
+    {% block title %}
+    <title>Order History</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}">
+
+</head>
+
+<body>
+{% block header %}
+<section class = "product-header">
+    {% endblock %}
+    {% block text %}
+    {% endblock %}
+    {% block body %}
+    <section class="cart">
+        <h1>Order History</h1>
+        <h2>Order No {{order.id}}</h2>
+        <div style ="justify-content: center;" class="row">
+
+
+            <div style = "flex-basis: 100%;" class="cart-col" id = "cart-col">
+                {% for item in items %}
+
+                <div  class="product-col">
+
+                        <div  class="cart-product">
+                            <a style="text-decoration:none" href="{{item.product.get_absolute_url}}">
+                            <img src="{{item.product.imageURL}}">
+                            <div class="product-info">
+                                <h3 class="product-name">{{item.product.title}}</h3>
+                                <h4 class="product-price">&dollar; {{item.product.price|floatformat:2}}</h4>
+                                <h4 class="product-offer">{{item.product.discount}}%</h4>
+                                </a>
+
+                                <p class = "product-quantity" >{{item.quantity}}</p>
+
+
+                            </div>
+                        </div>
+
+                       <button data-product="{{item.product.id}}" class="remove-btn" id = "review-button">Review</button>
+
+                </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+        </div>
+    </section>
+   
+    {% endblock %}
+</body>
+</html>

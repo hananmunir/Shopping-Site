@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'home.html' %}
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Searched Product</title>
+    {% endblock %}
+</head>
+<body>
+{% block header %}
+<section class ="search-header" >
+    {% endblock %}
+
+    {% block text %}
+    <div class="banner">
+        <div class="container">
+            <h1>FANDOM</h1>
+            <p>
+                Find your favourite FANDOM merchandise from anywhere anytime.
+            </p>
+
+            <div >
+                <form class="search" action = "." method = "GET">{% csrf_token %}
+
+                    <input class = "search-bar" type="text"  placeholder="SEARCH HERE" name="search">
+                    <button type="submit" style= "flex-basis: 15%;" class = "search-btn"><i class="fa fa-search"></i></button>
+                </form>
+
+
+            </div>
+        </div>
+        {% endblock %}
+        {% block body %}
+
+
+        <!-- reviews -->
+        <section id="card-container" class="more-product-section">
+            <h1>Results</h1>
+            <h3 style = "font-size : 32px; font-weight: 500; padding: 70px 0 70px 0;">
+                {% for message in messages %}
+                {{message}}
+                {% endfor %}
+
+            </h3>
+
+            <div class="card-title">
+                {% for product in products %}
+                <div class="card" >
+                     <a href="{{product.get_absolute_url}}"><img src="{{product.imageURL}}" alt="Product Image" style="width:100%"></a>
+                    <h4>{{product.title}}</h4>
+                    <p class="price">${{product.price}}</p>
+                    <p>{{product.special_note}}</p>
+                    <p><button data-product = "{{product.id}}" data-action = "add" class = "update-cart">Add to Cart</button></p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </section>
+
+
+        {% endblock %}
+</body>
+</html>

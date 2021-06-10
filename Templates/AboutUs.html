@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+
+     {% extends 'home.html' %}
+    {% load static %}
+
+    {% block title %}
+    <title>About Us-Fandom Store</title>
+    {% endblock %}
+
+
+</head>
+
+<body>
+    {% block header %}
+    <section class="sub-header-about">
+    {% endblock %}
+
+        {% block text %}
+        <h1>About Us</h1>
+        {% endblock %}
+
+    </section>
+
+    {% block body %}
+    <!----About Us---->
+    <section class = "about-us">
+        <H1>Who Are We</H1>
+        <p>We realise how much stories and characters can touch our hearts. We all belong to some Fandom
+            , we all are inspired by some characters and we all have learned something from those stories. So
+             keeping that in mind, we know that little thing reminding us about our favorite fandoms can mean to us.
+            This is the idea behind the fandom store, to bring people close to their favorite ficitonal universes. </p>
+
+    </section>
+
+    <!----Developers---->
+    <section class="developers">
+        <h3>Developers</h3>
+        <div class = "developer-row">
+            <div class="developer-col">
+                <img src="{% static 'images/user1.jpg' %}" alt="Developer">
+                <div class="developer-overlay">
+                    <div class="content-about">
+                        <h3>Hanan Munir</h3>
+                        <p>Believe that you can <br>and You will</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="developer-col">
+                <img src="{% static 'images/aimen.jpeg' %}" alt="Developer">
+
+                <div class="developer-overlay">
+                    <div class="content-about">
+                        <h3>Aimen Elahi</h3>
+                        <p>Respect tastes better <br>than attention</p>
+                    </div>
+                </div>
+            </div>
+            <div class="developer-col">
+                <img src="{% static 'images/maryam.jpeg' %}" alt="Developer">
+                <div class="developer-overlay">
+                    <div class="content-about">
+                        <h3>Maryam Naveed</h3>
+                        <p>Dont give up on something ypu think of daily</p>
+                    </div>
+            
+                </div>
+            
+            </div>
+
+            <div class="developer-col">
+                <img src="{% static 'images/ayesha.jpeg' %}" alt="Developer">
+                <div class="developer-overlay">
+                    <div class="content-about">
+                        <h3>Ayesha Rashid</h3>
+                        <p>Die with memories, not dreams </p>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="developer-col">
+                <img src="{% static 'images/marwa.jpeg' %}" alt="Developer">
+                <div class="developer-overlay">
+                    <div class="content-about">
+                        <h3>Marwa Khalid</h3>
+                        <p>We all shoud believe in ourselves</p>
+                    </div>
+
+                </div>
+
+            </div>
+           
+            </div>
+    </section>
+    {% endblock %}
+
+
+
+
+</body>
+
+</html>

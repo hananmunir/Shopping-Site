@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    {% extends 'home.html' %}
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Payment</title>
+    {% endblock %}
+
+
+</head>
+<body>
+
+{% block header %}
+<section class = "product-header">
+    {% endblock %}
+    {% block text %}
+    {% endblock %}
+    {% block body %}
+   <section class="payment-section">
+    <div class="payment-container">
+        <form class="payment-form" action="action">
+            <h1>Payment</h1>
+            <div class="input-box">
+                <button type="button" class="pay-btn" id="btncard">Credit Card</button>
+                <button type="button" class="pay-btn" id="btncod"></i>COD</button>
+            </div>
+            <div class="CreditCard" id="nav-tab-card">
+                <label for="cardnumber">Credit card number</label>
+                </br>
+                <input class="credit-card" type="text" id="cardnumber" name="cardnumber" maxlength="19"
+                    pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}" placeholder="1234 1234 1234 1234" required />
+                </br>
+                <label for="cname">Credit Card Holder</label>
+                </br>
+                <input class="credit-card" type="text" id="cname" name="cardname" placeholder="Your name on the Card"
+                    required />
+                </br>
+    
+                <div class="credit-carditem">
+                    <label for="expyear">Expiry Year</label>
+                    </br>
+                    <input style="color: #000;" class="credit-cardgrp" type="month" id="expyear" name="expyear" placeholder="MM/YY" required />
+                </div>
+                <div class="credit-carditem">
+                    <label for="cvv">CVV</label>
+                    </br>
+                    <input class="credit-cardgrp" type="number" id="CVV" name="cvv" maxlength="3"
+                        placeholder="&#9679;&#9679;&#9679;" required />
+                </div>
+                <a href="/../order_confirmed"><button type="submit" class="payment-button">Pay</button></a>
+            </div>
+            <br>
+            <div class="cod" id="nav-tab-cod">
+                <a href="/../order_confirmed"><button type="button" class="payment-button">Continue</button></a>
+            </div>
+        </form>
+    </div>
+   </section>
+    {% endblock %}
+
+</body>
+</html>

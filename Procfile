@@ -1,0 +1,1 @@
+web: gunicorn oose_project.wsgi --log-file -

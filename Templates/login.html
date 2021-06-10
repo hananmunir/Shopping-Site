@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% extends 'home.html' %}
+    <meta charset="UTF-8">
+    {% block title %}
+    <title>Login</title>
+    {% endblock %}
+</head>
+<body>
+    {% block header %}
+    <section class = "product-header">
+    {% endblock %}
+        {% block text %}
+        {% endblock %}
+     {% block body %}
+        <section class = "login">
+            <form  method = "POST"> {% csrf_token %}
+                <div class="login-container">
+                    <div class = "messages">
+                        {% for message in messages %}
+                            <h4 >{{message}}</h4>
+                        {% endfor %}
+                    </div>
+                    <label for="uname"><b>Username</b></label><br>
+                    <input class = "login-input" type="text" id = "uname" placeholder="Enter Username" name="uname" required><br>
+
+                    <label for="psw"><b>Password</b></label><br>
+                    <input class = "login-input" type="password" id = "psw" placeholder="Enter Password" name="psw" required>
+
+                    <button class = "login-btn" type="submit">Login</button><br>
+                    <label><input type="checkbox" checked="checked" name="remember"> Remember me</label>
+                </div>
+                <div class="login-text-container">
+                    <span class="psw">Forgot <a href="/../reset_password">password?</a></span>
+                    <span><b>Don't have an account? <a href="/signup">Register</a> </b></span>
+                </div>
+            </form>
+
+
+            </section>
+     {% endblock %}
+
+
+</body>
+</html>
