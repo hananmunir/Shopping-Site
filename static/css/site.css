@@ -1839,7 +1839,12 @@ button:hover {
     color: #000;
 }
 
+
+
 @media (max-width:720px){
+    .product-title-div {
+        transform: scale(0.85);
+    }
 
     .review-div1{
         flex-direction: column;

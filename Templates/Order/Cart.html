@@ -35,7 +35,7 @@
                                 <h4 class="product-price">&dollar; {{item.product.price|floatformat:2}}</h4>
                                 <h4 class="product-offer">{{item.product.discount}}%</h4>
                                 </a>
-                                <div class="inc update-cart" data-product="{{item.product.id}}"  data-action ="add" style = "cursor:pointer; margin-left: 2.3em;">+</div>
+                                <div class="inc update-cart" data-product="{{item.product.id}}"  data-action ="increase" style = "cursor:pointer; margin-left: 2.3em;">+</div>
                                 <p class = "product-quantity" >{{item.quantity}}</p>
                                 <div class="dec update-cart" data-product="{{item.product.id}}"  data-action ="remove"  style = "cursor:pointer; margin-left: 2.3em;" >-</div>
                             </div>
@@ -54,7 +54,7 @@
                     <h2><b>Summary</b></h2>
                     <p>
                         <span>SubTotal</span>
-                        <span>&dollar;{{order.get_cart_total}}</span>
+                        <span>&dollar;{{order.get_cart_total|floatformat:2}}</span>
                     </p>
                     <p>
                         <span>Number of Items</span>
@@ -62,12 +62,12 @@
                     </p>
                     <p>
                         <span>Discount</span>
-                        <span>&dollar;{{order.get_total_discount}}</span>
+                        <span>&dollar;{{order.get_total_discount|floatformat:2}}</span>
 
                     </p>
                     <p>
                         <span>Total Price</span>
-                        <span>&dollar;{{order.get_cart_total_price}}</span>
+                        <span>&dollar;{{order.get_cart_total_price|floatformat:2}}</span>
                     </p>
                     <a href="/../payment">Checkout</a>
                 </div>
