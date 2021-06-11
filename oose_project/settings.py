@@ -46,6 +46,9 @@ INSTALLED_APPS = [
     'about_us',
     'contact_us',
     'order',
+
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -146,4 +149,13 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # EMAIL_USE_TLS = True
 # EMAIL_HOST_USER =
 # EMAIL_HOST_PASSWORD = None
+
+
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = 'AKIAXUOWQJJGAXBE5EK7'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'fandom-store-bucket'
+
 
