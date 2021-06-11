@@ -26,6 +26,7 @@ def order_history_view(request,id):
     }
     return render(request,'Order/order_history.html', context)
 
+@login_required(redirect_field_name='accounts/login')
 def update_item(request):
     data = json.loads(request.body)
     productId = data['productId']

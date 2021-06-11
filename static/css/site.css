@@ -1842,11 +1842,17 @@ button:hover {
 
 
 @media (max-width:720px){
-    .product-title-div {
+    .product-title-div, .description-container-2{
         transform: scale(0.85);
     }
 
     .review-div1{
         flex-direction: column;
     }
+
+    .description-container-2{
+  display: table;
+  width: 80%;
+
+}
 }

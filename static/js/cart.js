@@ -5,12 +5,12 @@ for(var i = 0; i < updateBtns.length; i++){
     updateBtns[i].addEventListener('click', function(){
         var productId = this.dataset.product
         var action = this.dataset.action
-        console.log(action)
-        if(action == "add"){
+        console.log(action )
+        if(action == "add" && user !='AnonymousUser'){
             alert("Product Added to cart");
         }
         if (user == 'AnonymousUser'){
-            console.log("Not Logged In")
+            alert("Not Logged In")
         }
         else{
             updateUserOrder(productId,action)
