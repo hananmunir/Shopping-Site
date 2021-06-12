@@ -166,7 +166,7 @@ def signup_view(request):
                 if birthdate > datetime.date.today():
                     messages.info(request, "Invalid birthdate, if you are not from future :)")
                 if datetime.datetime(1920,1,1).date() < datetime.date.today():
-                    messages.info(request, "Invalid birthdate,You cannot be 110 years old. We hope")
+                    messages.info(request, "Invalid birthdate,You cannot be older then 110 years. We hope")
                 if len(phoneno) < 7:
                     messages.info(request, "Invalid entry in phone number field")
                 #validates is username is unique
