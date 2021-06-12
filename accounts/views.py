@@ -7,7 +7,10 @@ from django.db import IntegrityError
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+import datetime
+
 from order.models import Order
+
 
 
 # Create your views here.
@@ -92,15 +95,19 @@ def address_update_view(request):
         street_address = request.POST.get('address')
         phoneno = request.POST.get('phoneno')
 
-        #assigings new values
-        customer.phone_number = phoneno
-        customer.address.country = country
-        customer.address.city = city
-        customer.address.area = area
-        customer.address.street_address = street_address
-        customer.save()
+        if len(phoneno) < 7:
+            messages.info(request, "Invalid entry in phone number field")
+        else:
+
+            #assigings new values
+            customer.phone_number = phoneno
+            customer.address.country = country
+            customer.address.city = city
+            customer.address.area = area
+            customer.address.street_address = street_address
+            customer.save()
         #redirect to accounts page
-        return redirect("../accounts")
+            return redirect("../accounts")
 
 
     return render(request, "edit_address.html",context)
@@ -143,6 +150,8 @@ def signup_view(request):
             email = request.POST.get('email')
             phoneno = request.POST.get('phoneno')
             birthdate = request.POST.get('birthday')
+            date_list = birthdate.split('-')
+            birthdate = datetime.datetime(int(date_list[0]), int(date_list[1]), int(date_list[2])).date()
             gender = request.POST.get('gender')
             country = request.POST.get('country')
             city = request.POST.get('city')
@@ -154,6 +163,12 @@ def signup_view(request):
 
             #validates if both password are same
             if psw == psw_repeat:
+                if birthdate > datetime.date.today():
+                    messages.info(request, "Invalid birthdate, if you are not from future :)")
+                if datetime.datetime(1920,1,1).date() < datetime.date.today():
+                    messages.info(request, "Invalid birthdate,You cannot be 110 years old. We hope")
+                if len(phoneno) < 7:
+                    messages.info(request, "Invalid entry in phone number field")
                 #validates is username is unique
                 if User.objects.filter(username = userName).exists():
                     messages.info(request, "UserName Already Exists, try a different username")

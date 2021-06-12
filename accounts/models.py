@@ -18,7 +18,7 @@ class Customer(models.Model):
     fname = models.CharField(max_length=50 , null= True)
     lname = models.CharField(max_length=50, null=True)
     email = models.EmailField(max_length = 256, null = True)
-    phone_number = models.CharField(max_length= 22, null = True, blank = True)
+    phone_number = models.CharField(max_length= 15, null = True, blank = True)
     DOB = models.DateField()
     gender = models.CharField(max_length = 6, null = True)
     address = models.ForeignKey(Address, on_delete= models.CASCADE, null=True ,blank=True)

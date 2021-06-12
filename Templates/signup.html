@@ -8,23 +8,23 @@
     {% endblock %}
 </head>
 <body>
-    {% block header %}
-    <section class = "product-header">
+{% block header %}
+<section class = "product-header">
     {% endblock %}
-        {% block text %}
-        {% endblock %}
-     {% block body %}
+    {% block text %}
+    {% endblock %}
+    {% block body %}
 
-        <div class="signup-container">
-            <h1>Sign Up</h1>
-            <p>Please fill in this form to create an account.</p>
-            <hr>
-            <div style = "width:70%; margin:auto; text-align:center;" class = "messages">
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <div style = "width:70%; margin:auto; text-align:center;" class = "messages">
             {% for message in messages%}
-                <h3 style = " color: red;">{{message}}</h3>
+            <h3 style = " color: red;">{{message}}</h3>
             {% endfor %}
-            </div>
-            <form action = "" method="POST">{% csrf_token %}
+        </div>
+        <form action = "" method="POST">{% csrf_token %}
             <label for="fname"><b>First Name*</b></label>
             <input class = "login-input" type="text" id= "fname"  placeholder="First Name" name="fname" required>
 
@@ -39,7 +39,7 @@
             <input class = "login-input" type="text" id = "phoneno" placeholder="Phone Number" name="phoneno" >
 
             <label for="birthday"><b>Birthday*</b></label><br>
-            <input  class = "login-input" type="date" id="birthday" name="birthday">
+            <input  class = "login-input" type="date" id="birthday" name="birthday" placeholder = "dd-mm-yyyy">
 
             <br><br><label for="gender"><b>Select Gender*</b></label><br>
             <select class = "login-input" name="gender" id="gender" selected = "Other">
@@ -321,10 +321,11 @@
                 <button type="button" class="cancelbtn">Cancel</button>
                 <button type="submit" class="signupbtn">Sign Up</button>
             </div>
-                </form>
-        </div>
+        </form>
+    </div>
 
 
-     {% endblock %}
+
+    {% endblock %}
 </body>
 </html>
