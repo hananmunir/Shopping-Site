@@ -864,6 +864,7 @@ nav {
 .signup-container input[type=password] {
     width: 100%;
     padding: 15px;
+    color: #000;
     margin: 5px 0 22px 0;
     display: inline-block;
     border: none;
