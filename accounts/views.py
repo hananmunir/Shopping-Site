@@ -106,7 +106,7 @@ def address_update_view(request):
             customer.address.city = city
             customer.address.area = area
             customer.address.street_address = street_address
-            customer.save()
+            customer.address.save()
         #redirect to accounts page
             return redirect("../accounts")
 
