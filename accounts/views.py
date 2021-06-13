@@ -6,6 +6,7 @@ from django.contrib.auth.models import User, auth
 from django.db import IntegrityError
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from dateutil.relativedelta import relativedelta
 from django.contrib.auth import logout
 import datetime
 
@@ -161,12 +162,17 @@ def signup_view(request):
             psw = request.POST.get('psw')
             psw_repeat = request.POST.get('psw-repeat')
 
+            max_age = datetime.date.today() - relativedelta(years=110)
+            min_age = datetime.date.today() - relativedelta(years=13)
+
             #validates if both password are same
             if psw == psw_repeat:
                 if birthdate > datetime.date.today():
                     messages.info(request, "Invalid birthdate, if you are not from future :)")
-                if datetime.datetime(1920,1,1).date() < datetime.date.today():
+                if max_age > birthdate:
                     messages.info(request, "Invalid birthdate,You cannot be older then 110 years. We hope")
+                if min_age < birthdate:
+                    messages.info(request, "Invalid birthdate,You should be atleast 13 years old")
                 if len(phoneno) < 7:
                     messages.info(request, "Invalid entry in phone number field")
                 #validates is username is unique
