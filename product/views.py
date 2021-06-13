@@ -5,6 +5,7 @@ import json
 from django.contrib import messages
 # Create your views here.
 
+#gets details of products and displays it
 def product_detialed_view(request,id):
     product = get_object_or_404(Product,id = id)
     context = {
@@ -12,6 +13,8 @@ def product_detialed_view(request,id):
     }
     
     return render(request,'Product/product_detailed_view.html',context)
+
+#displays a page having all products
 def product_view(request):
     product = Product.objects.all()
 
@@ -22,7 +25,7 @@ def product_view(request):
 
     return render(request,'Product/search_product.html',context)
 
-
+#displays searched products
 def search_product_view(request):
     products = Product.objects.all()
     query = request.GET.get('search')
@@ -32,6 +35,7 @@ def search_product_view(request):
         if query.lower() in product.title.lower():
             quered_product.append(product)
 
+    #if no products are found,display message
     if len(quered_product) == 0:
         messages.info(request, "Sorry! We Could not find any relevant product. Feel free to check our other Products")
     context = {
