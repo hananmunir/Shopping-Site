@@ -8,24 +8,20 @@
     {% endblock %}
 </head>
 <body>
-    {% block header %}
-    <section class = "product-header">
+{% block header %}
+<section class = "product-header">
     {% endblock %}
-        {% block text %}
-        {% endblock %}
-     {% block body %}
+    {% block text %}
+    {% endblock %}
+    {% block body %}
 
-        <div class="signup-container">
-            <h1>Edit Address</h1>
+    <div class="signup-container">
+        <h1>Edit Address</h1>
 
-            <hr>
-
+        <hr>
+        <form action = "" method="POST">{% csrf_token %}
             <label for="phoneno"><b>Phone Number</b></label>
             <input class = "login-input" value = "{{customer.phone_number}}"type="text" id = "phoneno" placeholder="Phone Number" name="phoneno" >
-
-
-
-
 
             <label for="country"><b>Select Country*</b></label><br>
             <select value="{{customer.address.country}}" class = "login-input" name = "country" id = "country">
@@ -279,20 +275,17 @@
             <label for="address"><b>Street Address*</b></label>
             <input value = "{{customer.address.street_address}}" class = "login-input" type="text" id = "address" placeholder="Address" name="address" required>
 
-
-
-
             <div class="clearfix">
                 <button type="button" class="cancelbtn">Cancel</button>
                 <button type="submit" class="signupbtn">Save</button>
             </div>
-                </form>
-        </div>
+        </form>
+    </div>
 
-        <script>
+    <script>
             $("select").each(function(){$(this).find('option[value="{{customer.address.country}}"]').prop('selected', true); });
         </script>
 
-     {% endblock %}
+    {% endblock %}
 </body>
 </html>
