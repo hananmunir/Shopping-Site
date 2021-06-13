@@ -236,10 +236,16 @@
                 $("#product-id").hide();
              $('#review-button').click(function () {
                  var id = this.dataset.product;
-                console.log(id);
+
                 window.location.href = '../review/' + id;
                 return false;
             });
+             $('#edit-cancel-btn').click(function () {
+
+                window.location.href = "../accounts";
+                return false;
+            });
+
             $(".login-input").click(function(){
                 $(".messages").hide();
             });
